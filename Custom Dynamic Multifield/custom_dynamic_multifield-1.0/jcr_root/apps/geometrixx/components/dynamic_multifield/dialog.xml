@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="dialog"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Panel"
+                title="Hertz Family Images">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <panel jcr:primaryType="cq:Panel">
+                        <items jcr:primaryType="cq:WidgetCollection">
+                            <images
+                                jcr:primaryType="cq:Widget"
+                                fieldLabel="Hertz Family Images"
+                                hideLabel="{Boolean}true"
+                                name="./value"
+                                xtype="[multifield]">
+                                <fieldConfig
+                                    jcr:primaryType="cq:Widget"
+                                    border="{Boolean}true"
+                                    layout="form"
+                                    padding="10px"
+                                    xtype="slideshow">
+                                    <items jcr:primaryType="cq:WidgetCollection">
+                                        <imagepath
+                                            jcr:primaryType="cq:Widget"
+                                            allowBlank="{Boolean}false"
+                                            autoWidth="{Boolean}false"
+                                            dName="imagepath"
+                                            fieldLabel="Image Path "
+                                            width="400"
+                                            xtype="pathfield"/>
+                                        <imageclickurl
+                                            jcr:primaryType="cq:Widget"
+                                            autoWidth="{Boolean}false"
+                                            dName="url"
+                                            fieldLabel="Image Click URL"
+                                            width="400"
+                                            xtype="textfield"/>
+                                    </items>
+                                </fieldConfig>
+                            </images>
+                        </items>
+                    </panel>
+                </items>
+            </tab1>
+        </items>
+    </items>
+</jcr:root>
