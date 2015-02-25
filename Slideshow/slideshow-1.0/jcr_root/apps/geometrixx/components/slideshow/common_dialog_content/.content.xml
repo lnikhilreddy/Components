@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured">
+    <positions jcr:primaryType="cq:WidgetCollection">
+        <top-left
+            jcr:primaryType="nt:unstructured"
+            text="Top Left"
+            value="topleft"/>
+        <top-right
+            jcr:primaryType="nt:unstructured"
+            text="Top Right"
+            value="topright"/>
+        <bottom-left
+            jcr:primaryType="nt:unstructured"
+            text="Bottom Left"
+            value="bottomleft"/>
+        <bottom-right
+            jcr:primaryType="nt:unstructured"
+            text="Bottom Right"
+            value="bottomright"/>
+        <center
+            jcr:primaryType="nt:unstructured"
+            text="Center"
+            value="center"/>
+    </positions>
+    <imagepathfield jcr:primaryType="nt:unstructured">
+        <listeners
+            jcr:primaryType="nt:unstructured"
+            dialogopen="function(){ Htz.AEM.PathField.sortTags(this, true); }"
+            dialogselect="function(pathfield,path,anchor){  &#xa;    var image = pathfield.previousSibling();&#xa;    var pathArray = path.split('/'); &#xa;    var imageName = pathArray[(pathArray.length-1)]; &#xa;    var fakeDragData = {}; &#xa;    var fakeRecord = {}; &#xa;    fakeRecord.path = path; &#xa;    fakeRecord.name = imageName; &#xa;    fakeRecord.get = function(name){ return this[name]; }; &#xa;    fakeDragData.records = new Array(fakeRecord); &#xa;    fakeDragData.single = true; &#xa;    image.handleDrop(fakeDragData);&#xa;}"
+            loadContent="function(pathfield,record,path) {  &#xa;    var image &#x9;&#x9;= pathfield.previousSibling();&#xa;    var imgPath&#x9;&#x9;= pathfield.getValue()&#xa;    var pathArray &#x9;= imgPath.split('/'); &#xa;    var imageName = pathArray[(pathArray.length-1)]; &#xa;    var fakeDragData = {}; &#xa;    var fakeRecord = {}; &#xa;    fakeRecord.path = imgPath; &#xa;    fakeRecord.name = imageName; &#xa;    fakeRecord.get = function(name){ return this[name]; }; &#xa;    fakeDragData.records = new Array(fakeRecord); &#xa;    fakeDragData.single = true; &#xa;    image.handleDrop(fakeDragData);&#xa;}"/>
+    </imagepathfield>
+</jcr:root>

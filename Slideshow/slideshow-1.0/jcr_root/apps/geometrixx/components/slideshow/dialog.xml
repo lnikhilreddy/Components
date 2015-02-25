@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="700"
+    title="Slideshow"
+    width="800"
+    xtype="dialog">
+    <items
+        jcr:primaryType="cq:Widget"
+        border="{Boolean}false"
+        deferredRender="{Boolean}false"
+        flex="{Long}1"
+        hideMode="offsets"
+        layoutOnTabChange="{Boolean}true"
+        plain="{Boolean}true"
+        xtype="tabpanel">
+        <items jcr:primaryType="cq:WidgetCollection">
+            <tab1
+                jcr:primaryType="cq:Widget"
+                title="Slide 1"
+                xtype="panel">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <image
+                        jcr:primaryType="cq:Widget"
+                        allowUpload="{Boolean}false"
+                        border="{Boolean}true"
+                        cropParameter=""
+                        ddGroups="[media]"
+                        disableInfo="{Boolean}true"
+                        disableZoom="{Boolean}true"
+                        fileNameParameter=""
+                        fileReferenceParameter=""
+                        height="{Long}250"
+                        mapParameter=""
+                        name=""
+                        rotateParameter=""
+                        xtype="html5smartimage">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            imagestate="function( imgComp, state, object ) {  console.log('state change');&#xa;&#x9;var pathfield   = imgComp.nextSibling();&#xa;&#x9;pathfield.setValue(imgComp.imagePanel.imageToDisplay.dataPath); &#xa;&#x9;//pathfield.setValue(x.fileReferenceField.value); &#xa;} "/>
+                    </image>
+                    <imagepathfield
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Banner Image Path"
+                        name="./slide_1/img"
+                        rootPath="/content/dam"
+                        style="margin-bottom: 5px;"
+                        xtype="pathfield">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            path="/apps/geometrixx/components/slideshow/common_dialog_content/imagepathfield/listeners.infinity.json"
+                            xtype="cqinclude"/>
+                    </imagepathfield>
+                    <bannerclickurl
+                        jcr:primaryType="nt:unstructured"
+                        fieldLabel="Banner Click URL "
+                        name="./slide_1/banner_click_url"
+                        style="margin-bottom: 5px;"
+                        xtype="textfield"/>
+                    <buttontxt
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Button Text"
+                        name="./slide_1/slidetext_btntxt"
+                        style="margin-bottom: 5px;"
+                        width="98%"
+                        xtype="textfield"/>
+                    <position
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Position"
+                        name="./slide_1/slidetext_position"
+                        type="select"
+                        xtype="selection">
+                        <options
+                            jcr:primaryType="cq:WidgetCollection"
+                            path="/apps/geometrixx/components/slideshow/common_dialog_content/positions.infinity.json"
+                            xtype="cqinclude"/>
+                    </position>
+                    <banner-title
+                        jcr:primaryType="nt:unstructured"
+                        fieldDescription="This is the text that is displayed as title on top of the banner"
+                        fieldLabel="Banner Title"
+                        height="{Long}100"
+                        name="./slide_1/slidetext_title"
+                        xtype="richtext">
+                        <rtePlugins jcr:primaryType="nt:unstructured">
+                            <format
+                                jcr:primaryType="nt:unstructured"
+                                features="[bold]"/>
+                        </rtePlugins>
+                    </banner-title>
+                    <banner-description
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="This is the banner description that displays on top of the banner"
+                        fieldLabel="Banner Description"
+                        height="100"
+                        name="./slide_1/slidetext_description"
+                        xtype="htmleditor"/>
+                </items>
+            </tab1>
+            <tab2
+                jcr:primaryType="cq:Widget"
+                title="Slide 2"
+                xtype="panel">
+                <items jcr:primaryType="cq:WidgetCollection">
+                    <image
+                        jcr:primaryType="cq:Widget"
+                        allowUpload="{Boolean}false"
+                        border="{Boolean}true"
+                        cropParameter=""
+                        ddGroups="[media]"
+                        disableInfo="{Boolean}true"
+                        disableZoom="{Boolean}true"
+                        fileNameParameter=""
+                        fileReferenceParameter=""
+                        height="{Long}250"
+                        mapParameter=""
+                        name=""
+                        rotateParameter=""
+                        xtype="html5smartimage">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            imagestate="function( imgComp, state, object ) {  console.log('state change');&#xa;&#x9;var pathfield   = imgComp.nextSibling();&#xa;&#x9;pathfield.setValue(imgComp.imagePanel.imageToDisplay.dataPath); &#xa;&#x9;//pathfield.setValue(x.fileReferenceField.value); &#xa;} "/>
+                    </image>
+                    <imagepathfield
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Banner Image Path"
+                        name="./slide_2/img"
+                        rootPath="/content/dam"
+                        style="margin-bottom: 5px;"
+                        xtype="pathfield">
+                        <listeners
+                            jcr:primaryType="nt:unstructured"
+                            dialogselect="function(pathfield,path,anchor) {   &#xa;    var image = pathfield.previousSibling();&#xa;    var pathArray = path.split('/'); &#xa;    var imageName = pathArray[(pathArray.length-1)]; &#xa;    var fakeDragData = {}; &#xa;    var fakeRecord = {}; &#xa;    fakeRecord.path = path; &#xa;    fakeRecord.name = imageName; &#xa;    fakeRecord.get = function(name){ return this[name]; }; &#xa;    fakeDragData.records = new Array(fakeRecord); &#xa;    fakeDragData.single = true; &#xa;    image.handleDrop(fakeDragData);&#xa;}"
+                            loadContent="function(pathfield,record,path) {  &#xa;    var image &#x9;&#x9;= pathfield.previousSibling();&#xa;    var imgPath&#x9;&#x9;= pathfield.getValue()&#xa;    var pathArray &#x9;= imgPath.split('/'); &#xa;    var imageName = pathArray[(pathArray.length-1)]; &#xa;    var fakeDragData = {}; &#xa;    var fakeRecord = {}; &#xa;    fakeRecord.path = imgPath; &#xa;    fakeRecord.name = imageName; &#xa;    fakeRecord.get = function(name){ return this[name]; }; &#xa;    fakeDragData.records = new Array(fakeRecord); &#xa;    fakeDragData.single = true; &#xa;    image.handleDrop(fakeDragData);&#xa;}"/>
+                    </imagepathfield>
+                    <bannerclickurl
+                        jcr:primaryType="nt:unstructured"
+                        fieldLabel="Banner Click URL "
+                        name="./slide_2/banner_click_url"
+                        style="margin-bottom: 5px;"
+                        xtype="textfield"/>
+                    <buttontxt
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Button Text"
+                        name="./slide_2/slidetext_btntxt"
+                        style="margin-bottom: 5px;"
+                        width="98%"
+                        xtype="textfield"/>
+                    <position
+                        jcr:primaryType="cq:Widget"
+                        fieldLabel="Position"
+                        name="./slide_2/slidetext_position"
+                        type="select"
+                        xtype="selection">
+                        <options
+                            jcr:primaryType="cq:WidgetCollection"
+                            path="/apps/geometrixx/components/slideshow/common_dialog_content/positions.infinity.json"
+                            xtype="cqinclude"/>
+                    </position>
+                    <banner-title
+                        jcr:primaryType="nt:unstructured"
+                        enableAlignments="{Boolean}false"
+                        enableColors="{Boolean}false"
+                        enableFont="{Boolean}false"
+                        enableFontSize="{Boolean}false"
+                        enableLists="{Boolean}false"
+                        enableSourceEdit="{Boolean}false"
+                        fieldDescription="This is the text that is displayed as title on top of the banner"
+                        fieldLabel="Banner Title"
+                        height="{Long}100"
+                        name="./slide_2/slidetext_title"
+                        xtype="htmleditor"/>
+                    <banner-description
+                        jcr:primaryType="cq:Widget"
+                        fieldDescription="This is the banner description that displays on top of the banner"
+                        fieldLabel="Banner Description"
+                        height="100"
+                        name="./slide_2/slidetext_description"
+                        xtype="htmleditor"/>
+                </items>
+            </tab2>
+        </items>
+    </items>
+    <listeners
+        jcr:primaryType="nt:unstructured"
+        activate="function(x)&#xa;{&#x9;&#xa;&#x9;var sourcePath = this.path.toString();&#xa;&#x9;var currentPage = CQ_Analytics.Utils.getPagePath();&#xa;&#x9;var res = sourcePath.split(&quot;/jcr:content&quot;);&#xa;&#x9;if(currentPage!= res[0])&#xa;&#x9;{&#x9;&#xa;&#x9; &#x9;this.hide();&#xa;&#x9; &#x9;CQ.Ext.MessageBox.alert('Referenced Content', 'Content is referenced from -> ' + res[0] + '&lt;/br> Click &lt;a style=&quot;cursor: pointer;&quot; href=&quot;' + res[0] + '.html&quot;>&lt;b>&lt;u>here&lt;/u>&lt;/b>&lt;/a> to goto that page' );&#xa;&#x9;}&#xa;}"/>
+</jcr:root>
